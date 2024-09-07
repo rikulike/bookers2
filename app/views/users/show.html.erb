@@ -1,4 +1,16 @@
-<h1>Users#show,</h1>
+<h1>Users#show,とりま完成</h1>
 <%= render 'books/new', book: @book %>
 <%= render 'user_info', user: @user %>
-<%= @books.each do |book| %>
+<h1>Books</h1>
+<h3>Title.     Opinion</h3>
+
+
+<% @books.each do |book| %>
+<div>
+<%= image_tag book.user.get_profile_image %>
+<%=link_to book.title ,book_path(book.id) %>
+
+<%= book.body %>
+</div>
+<% end %>
+
