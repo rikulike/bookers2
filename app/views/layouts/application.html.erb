@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <script src="https://kit.fontawesome.com/5fb2cd06c3.js" crossorigin="anonymous"></script>
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
+      <%= link_to "Bookers", root_path %>
       <% if user_signed_in? %>
       <li>
         <%= link_to "Home",user_path(current_user.id)%>
@@ -42,5 +43,8 @@
       <% end %>
     </header>
     <%= yield %>
+    <footer>
+      <h5>CopyRighet Riku Takayama</h5>
+      </footer>
   </body>
 </html>
