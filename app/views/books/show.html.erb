@@ -1,15 +1,33 @@
-<h1>Books#show,</h1>
-<%= render 'users/user_info', user: @user %>
-<%= render 'new', book: @book %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/user_info', user: @user %>
+      <%= render 'new', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
+      <table class="table">
+        <tbody>
+          <tr>
+            <td>
+              <%=link_to user_path(@B.user.id) do %>
+                <%= image_tag @B.user.get_profile_image %><br><%= @B.user.name %>
+              <% end %>
+            </td>
+            <td><%=link_to @B.title, book_path(@B.id) %></td>
+            <td><%=@B.body %></td>
+            <% if @B.user == current_user %>
+            <td><%= link_to "Edit", edit_book_path(@B.id),class:"text-light btn btn-sm btn-success" %></td>
+            <td ><%=link_to "Destroy", book_path(@B.id), method: :delete, "data-confirm"=>"本当に削除しますか？", class:"text-light btn btn-sm btn-danger"%></td>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
 
-<h1>Book detail</h1>
-<%= image_tag @B.user.get_profile_image %>
-<%=link_to @B.user.name,user_path(@B.user.id) %>
-<%=link_to @B.title, book_path(@B.id) %>
-<%=@B.body %>
 
-<% if @B.user == current_user %>
-  <%= link_to "Edit", edit_book_path(@B.id) %>
-  <%=link_to "Destroy", book_path(@B.id) %>
-<% end %>
+
+
